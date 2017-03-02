@@ -1,5 +1,6 @@
-app/src/config.local
-app/src/image/*.zip
+env/config.local
+image/*.zip
 app/src/workspace
 build.log
-!/app/src/config.local
+!/env/config.local
+/built/

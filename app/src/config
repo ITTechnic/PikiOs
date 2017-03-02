@@ -18,10 +18,10 @@ fi
 
 # Import the local config if we have one
 
-if [ -f $CONFIG_DIR/config.local ]
+if [ -f $CONFIG_DIR/../../env/config.local ]
 then
   echo "Sourcing config.local..."
-  source $CONFIG_DIR/config.local
+  source $CONFIG_DIR/../../env/config.local
 fi
 
 ###############################################################################

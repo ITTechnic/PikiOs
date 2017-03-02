@@ -6,7 +6,7 @@ set -e
 # Written by Guy Sheffer <guysoft at gmail dot com>
 # GPL V3
 
-source /common.sh
+source common.sh
 
 unpack /filesystem/home/pi /home/pi pi
 unpack /filesystem/home/root /root root
@@ -52,9 +52,6 @@ then
             chown -R pi:pi FullPageDashboard
             chown -R www-data:www-data FullPageDashboard
             chmod 775 FullPageDashboard
-            pushd FullPageDashboard
-                sed -i "s@'INIT_URL_PATH', __DIR__ . '/init.txt'@'INIT_URL_PATH', '/boot/fullpagedashboard.txt'@g" config.php
-            popd
         fi
         #Set Welcome screen
         if [ "$FULLPAGEOS_INCLUDE_WELCOME" == "yes" ]
