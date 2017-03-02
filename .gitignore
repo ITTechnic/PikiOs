@@ -2,3 +2,4 @@ app/src/config.local
 app/src/image/*.zip
 app/src/workspace
 build.log
+!/app/src/config.local

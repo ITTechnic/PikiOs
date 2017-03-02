@@ -1,0 +1,9 @@
+# FullPageDashboard repo & branch
+FULLPAGEOS_DASHBOARD_REPO_SHIP=https://github.com/twhiston/FullPageDashboard.git
+FULLPAGEOS_DASHBOARD_REPO_BRANCH=rebuild
+FULLPAGEOS_INCLUDE_DASHBOARD=yes
+
+# FullPageDashboard repo & branch
+FULLPAGEOS_WELCOME_REPO_SHIP=https://github.com/tailorvj/FullPageOSWelcome.git
+FULLPAGEOS_WELCOME_REPO_BRANCH=master
+FULLPAGEOS_INCLUDE_WELCOME=no
