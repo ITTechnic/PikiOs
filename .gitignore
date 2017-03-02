@@ -1,6 +1,6 @@
 env/config.local
-image/*.zip
 app/src/workspace
 build.log
 !/env/config.local
 /built/
+/image/

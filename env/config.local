@@ -2,7 +2,7 @@ ROOT_DIR=$CONFIG_DIR/../..
 
 # Override the image and workspace paths to make the build a little cleaner
 FULLPAGEOS_IMAGE_PATH=$ROOT_DIR/image
-FULLPAGEOS_WORKSPACE=$ROOT_DIR/built/$WORKSPACE_POSTFIX
+FULLPAGEOS_WORKSPACE=$ROOT_DIR/built$WORKSPACE_POSTFIX
 
 # Use our custom build of FullPageDashboard
 FULLPAGEOS_DASHBOARD_REPO_SHIP=https://github.com/twhiston/FullPageDashboard.git
