@@ -1,2 +1,4 @@
-src/config.local
-src/image/*.zip
+app/src/config.local
+app/src/image/*.zip
+app/src/workspace
+build.log

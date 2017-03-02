@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  builder:
+      privileged: true #this need privilages to run because it needs access to a loop device
+      build:
+        context: ./env
+        dockerfile: Dockerfile
+      container_name: fullpagebuilder
+      volumes:
+              - ./:/build
+      networks:
+        - dm_bridge #ONLY NECESSARY IF USING DM
+
+networks:
+  dm_bridge:
+    external: true
