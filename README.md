@@ -23,3 +23,6 @@ If you want to change the build process you can alter app/build.sh
 
 The local config file included in this project contains a different app repo to the base image
 which has a simple react frontend and an api driven silex back end.
+
+To use this you will need to set your root url to
+http://localhost/frontend/src/client/index.html

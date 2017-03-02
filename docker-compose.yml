@@ -9,9 +9,3 @@ services:
       container_name: fullpagebuilder
       volumes:
               - ./:/build
-      networks:
-        - dm_bridge #ONLY NECESSARY IF USING DM
-
-networks:
-  dm_bridge:
-    external: true
