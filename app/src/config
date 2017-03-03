@@ -33,7 +33,7 @@ fi
 [ -n "$FULLPAGEOS_ZIP_IMG" ] || FULLPAGEOS_ZIP_IMG=`ls -t $FULLPAGEOS_IMAGE_PATH/*-raspbian*.zip | head -n 1`
 
 [ -n "$FULLPAGEOS_WORKSPACE" ] || FULLPAGEOS_WORKSPACE=$FULLPAGEOS_SCRIPT_PATH/workspace$WORKSPACE_POSTFIX
-[ -n "$FULLPAGEOS_CHROOT_SCRIPT_PATH" ] || FULLPAGEOS_CHROOT_SCRIPT_PATH=$FULLPAGEOS_SCRIPT_PATH/chroot_script
+[ -n "$FULLPAGEOS_CHROOT_SCRIPT_PATH" ] || FULLPAGEOS_CHROOT_SCRIPT_PATH=$FULLPAGEOS_SCRIPT_PATH/scripts/onboard/chroot_script
 [ -n "$FULLPAGEOS_MOUNT_PATH" ] || FULLPAGEOS_MOUNT_PATH=$FULLPAGEOS_WORKSPACE/mount
 
 # if set will enlarge root parition prior to build by provided size in MB
@@ -81,6 +81,9 @@ fi
 # Add GPU acceleration
 [ -n "$FULLPAGEOS_INCLUDE_ACCELERATION" ] || FULLPAGEOS_INCLUDE_ACCELERATION=yes
 
+
+#FULLPAGEOS_QUIET_BOOT
+[ -n "FULLPAGEOS_QUIET_BOOT" ] || FULLPAGEOS_QUIET_BOOT=false
 
 ###############################################################################
 # Rewrite any build urls that are not yet set if we have a repository mirror

@@ -1,4 +1,9 @@
+#This overrides the base build with some environment specific settings.
+#We always want these for our base version, but can be changed as appropriate
+
 ROOT_DIR=$CONFIG_DIR/../..
+
+#FULLPAGEOS_OVERRIDE_HOSTNAME=fullpageos
 
 # Override the image and workspace paths to make the build a little cleaner
 FULLPAGEOS_IMAGE_PATH=$ROOT_DIR/image
@@ -13,3 +18,6 @@ FULLPAGEOS_INCLUDE_DASHBOARD=yes
 FULLPAGEOS_WELCOME_REPO_SHIP=https://github.com/tailorvj/FullPageOSWelcome.git
 FULLPAGEOS_WELCOME_REPO_BRANCH=master
 FULLPAGEOS_INCLUDE_WELCOME=yes
+
+# Set to true to have a nice black screen the whole boot
+FULLPAGEOS_QUIET_BOOT=false

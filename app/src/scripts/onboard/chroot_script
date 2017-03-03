@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#set -x
+set -e
+# OctoPI generation script
+# Helper script that runs in a Raspbian chroot to create the OctoPI distro
+# Written by Guy Sheffer <guysoft at gmail dot com>
+# GPL V3
+
+source ../common.sh
+
+regex="[^/]*$"
+for installer in ./installers/*.sh; do
+    echo ${installer} | grep -oP "${regex}"
+    source ${installer}
+done
+
+#cleanup
+apt-get clean
+apt-get autoremove -y

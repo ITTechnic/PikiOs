@@ -1,10 +1,6 @@
 FullPageOS
 ==========
 
-.. image:: https://raw.githubusercontent.com/guysoft/FullPageOS/devel/media/FullPageOS.png
-.. :scale: 50 %
-.. :alt: FullPageOS logo
-
 A `Raspberry Pi <http://www.raspberrypi.org/>`_ distribution to display one webpage in full screen. It includes `Chromium <https://www.chromium.org/>`_ out of the box and the scripts necessary to load it at boot.
 This repository contains the source script to generate the distribution out of an existing `Raspbian <http://www.raspbian.org/>`_ distro image.
 

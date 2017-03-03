@@ -2,15 +2,16 @@
 
 set -e
 
-[ -n "$LOG" ] || LOG="build.log"
-
 define(){ IFS='\n' read -r -d '' ${1} || true; }
 
-define SCRIPT <<'EOF'
 BUILD_SCRIPT__PATH=$(dirname $(realpath -s $BASH_SOURCE))
-source ${BUILD_SCRIPT__PATH}/common.sh
+
+COMMON_PATH=${BUILD_SCRIPT__PATH}/onboard/common.sh
+
+source ${COMMON_PATH}
 
 FULLPAGEOS_PATH=$(dirname $(realpath -s $0))
+
 pushd $FULLPAGEOS_PATH
   export FULLPAGEOS_COMMIT=`git rev-parse HEAD`
 popd
@@ -50,7 +51,4 @@ fi
 echo -e "--> Building VARIANT $BUILD_VARIANT, FLAVOR $BUILD_FLAVOR"
 
 source $FULLPAGEOS_PATH/config
-[ "$CONFIG_ONLY" == "yes" ] || source $FULLPAGEOS_PATH/fullpageos
-EOF
-
-[ "$LOG" != "no" ] && (eval "$SCRIPT" 2>&1 | tee "$LOG") || eval "$SCRIPT"
+[ "$CONFIG_ONLY" == "yes" ] || source ${BUILD_SCRIPT__PATH}/fullpageos

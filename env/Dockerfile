@@ -3,6 +3,6 @@ FROM ubuntu:latest
 USER 0
 
 RUN apt-get update && \
-    apt-get -y install qemu-user-static realpath zip sudo
+    apt-get -y install qemu-user-static realpath zip sudo lsof git
 
 CMD /build/env/build.sh
