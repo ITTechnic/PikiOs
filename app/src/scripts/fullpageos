@@ -37,17 +37,12 @@ unmount_image ${FULLPAGEOS_MOUNT_PATH} force || true
 
 
 pushd ${FULLPAGEOS_WORKSPACE}
-  if [ -e *.bck ]; then
-    FULLPAGEOS_BCK_PATH=`ls | grep .bck`
+
     if [ -e *.img ]; then
         echo 'Deleting stale output image'
         rm *.img
     fi
-    echo 'Restoring Backup Image'
-    cp ${FULLPAGEOS_BCK_PATH} "${FULLPAGEOS_BCK_PATH%.bck}.img"
-    FULLPAGEOS_IMG_PATH=`ls | grep .img`
-    echo 'Backup Image Restored'
-  else
+
     echo 'Unzip Image'
     unzip ${FULLPAGEOS_ZIP_IMG}
     FULLPAGEOS_IMG_PATH=`ls | grep .img`
@@ -59,7 +54,7 @@ pushd ${FULLPAGEOS_WORKSPACE}
     fi
     echo 'Make Backup Image'
     cp ${FULLPAGEOS_IMG_PATH} "${FULLPAGEOS_IMG_PATH%.img}.bck"
-  fi
+
 
   # mount root and boot partition
   mount_image ${FULLPAGEOS_IMG_PATH} ${FULLPAGEOS_MOUNT_PATH}

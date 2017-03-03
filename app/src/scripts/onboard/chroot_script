@@ -15,5 +15,6 @@ for installer in ./installers/*.sh; do
 done
 
 #cleanup
+echo 'Cleanup'
 apt-get clean
 apt-get autoremove -y

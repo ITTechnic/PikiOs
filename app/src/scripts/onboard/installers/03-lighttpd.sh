@@ -2,7 +2,6 @@
 
 if [ "$FULLPAGEOS_INCLUDE_LIGHTTPD" == "yes" ]
 then
-    echo 'Installing Lighttpd'
     # Add the repos necessary to install php 7.0
     cat <<EOT >> /etc/apt/sources.list
 deb http://mirrordirector.raspbian.org/raspbian/ stretch main contrib non-free rpi

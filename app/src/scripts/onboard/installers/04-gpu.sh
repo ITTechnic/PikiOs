@@ -2,7 +2,6 @@
 
 if [ "${FULLPAGEOS_INCLUDE_ACCELERATION}" == "yes" ]
 then
-    echo 'Installing Gpu'
     apt-get -y --force-yes install xcompmgr libgl1-mesa-dri mesa-utils
 
     # Hack to pass non-interactive install
