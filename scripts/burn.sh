@@ -2,6 +2,8 @@
 #Copy the image to the disk.
 #Needs some work to allow passing the image name etc....
 
+DISK_ID=2
+
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
@@ -16,8 +18,10 @@ pushd ${BUILD_PATH}
     if [ -e *.img ]; then
         IMG_PATH=`ls | grep .img`
         echo "Found Image ${IMG_PATH} to burn"
+        echo "Unmount /dev/disk/${DISK_ID}"
+        diskutil unmountDisk /dev/disk${DISK_ID}
         echo "Burning image to disk"
-        sudo dd bs=1m if=${IMG_PATH}  of=/dev/rdisk2
+        sudo dd bs=1m if=${IMG_PATH}  of=/dev/rdisk${DISK_ID}
     else
         echo "Could not find any images to burn in ${BUILD_PATH}"
     fi

@@ -15,7 +15,18 @@ EOT
 
     apt-get update
 
-    DEBIAN_FRONTEND=noninteractive apt-get install -y -t stretch lighttpd php7.0-common php7.0-cgi php7.0 php7.0-opcache
+    DEBIAN_FRONTEND=noninteractive apt-get install -y -t stretch lighttpd \
+    php7.0 \
+    php7.0-common \
+    php7.0-cgi \
+    php7.0-opcache \
+    php7.0-curl \
+    php7.0-pdo \
+    php7.0-xml \
+    php7.0-cli \
+    php7.0-mbstring \
+    php7.0-mcrypt \
+    php7.0-intl
     lighty-enable-mod fastcgi-php
     #service lighttpd force-reload
     chown -R www-data:www-data /var/www/html
@@ -32,6 +43,11 @@ EOT
             chown -R pi:pi FullPageDashboard
             chown -R www-data:www-data FullPageDashboard
             chmod 775 FullPageDashboard
+            pushd /var/www/html/FullPageDashboard
+                  php -r "readfile('https://getcomposer.org/installer');" | php
+                  # Install App dependencies using Composer
+                  ./composer.phar install --no-interaction --no-ansi --optimize-autoloader
+            popd
         fi
         #Set Welcome screen
         if [ "${FULLPAGEOS_INCLUDE_WELCOME}" == "yes" ]

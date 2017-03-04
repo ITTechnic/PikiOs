@@ -20,6 +20,8 @@ function execute_chroot_script() {
   chmod -R 755 ./onboard/
   mv ./onboard/* ./
   rm -rf ./onboard
+
+  cp -R ${ROOT_DIR}/app/assets ./assets
   
   chroot . usr/bin/qemu-arm-static /bin/bash /chroot_script
   

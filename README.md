@@ -26,6 +26,15 @@ If you want to change the build process you can alter env/build.sh
 
 You can burk the image to disk with `/env/burn.sh`
 
+Before booting the image add ` 1` to cmdline.txt to boot to the prompt
+once at the prompt run `raspi-config` and make sure you configure
+
+- your graphics card memory
+- install the driver for GPU acceleration
+- localization setup
+
+then `vi /boot/cmdline.txt` and remove the ` 1` you added earlier, save and restart
+
 ## Troubleshooting
 
 ### Blank screen, or a blank screen with a single cursor line
@@ -47,7 +56,6 @@ Everything should work
 
 If it stalls after booting its because the script pauses if it cant connect to the web root,
 so make sure you have network connections set up.
-TODO - make the setup of this more dynamic and remove old static url from script
 
 
 ## Additional Changes
@@ -64,7 +72,9 @@ TODO - make the setup of this more dynamic and remove old static url from script
 
 ## TODO
 
-- ONEPAGEOS is tightly bound to their app url :(
+
+- lighttpd vhost setup for proper vhosts when using php apps with a single entrypoint
+- ONEPAGEOS is tightly bound to their app url :( make this configurable
 - work on variants, which are not really well supported atm, allow drop in installer scripts in variants
 - image caching mid build for resumes?
 - some folder structure changes for better separation

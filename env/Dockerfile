@@ -5,4 +5,4 @@ USER 0
 RUN apt-get update && \
     apt-get -y install qemu-user-static realpath zip sudo lsof git
 
-CMD /build/env/build.sh
+CMD /build/scripts/build.sh
