@@ -26,10 +26,10 @@ If you want to change the build process you can alter env/build.sh
 
 You can burk the image to disk with `/env/burn.sh`
 
-
 ## Troubleshooting
 
-If you boot to a blank screen, or a blank screen with a single cursor line then you probably need to adjust your settings
+### Blank screen, or a blank screen with a single cursor line
+you probably need to adjust your settings
 - Put the Pi SSD into your local machine and edit cmdline.txt. At the end of the file add ` 1`
 - Boot your pi and you will be taken to the console.
 - Run `raspi-config`
@@ -42,6 +42,13 @@ If you boot to a blank screen, or a blank screen with a single cursor line then 
 - Reboot your pi
 
 Everything should work
+
+### Black screen with a cursor
+
+If it stalls after booting its because the script pauses if it cant connect to the web root,
+so make sure you have network connections set up.
+TODO - make the setup of this more dynamic and remove old static url from script
+
 
 ## Additional Changes
 
@@ -56,6 +63,8 @@ Everything should work
 - removed nightly build scripts
 
 ## TODO
+
 - ONEPAGEOS is tightly bound to their app url :(
-- change the way variants work, move their location and allow drop in installer scripts
+- work on variants, which are not really well supported atm, allow drop in installer scripts in variants
 - image caching mid build for resumes?
+- some folder structure changes for better separation

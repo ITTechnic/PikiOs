@@ -30,7 +30,7 @@ fi
 if [ $BUILD_VARIANT != 'default' ]; then
   WORKSPACE_POSTFIX=-$BUILD_VARIANT
 
-  export VARIANT_BASE="${ROOT_DIR}/variants/${BUILD_VARIANT}"
+  export VARIANT_BASE="${ROOT_DIR}/app/variants/${BUILD_VARIANT}"
   [ -d $VARIANT_BASE ] || die "Could not find Variant $BUILD_VARIANT"
 
   if [ $BUILD_FLAVOR == '' ] || [ $BUILD_FLAVOR == 'default' ]
