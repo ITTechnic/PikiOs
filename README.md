@@ -24,6 +24,9 @@ The final image will be output in `./built/*.img`
 
 If you want to change the build process you can alter env/build.sh
 
+You can burk the image to disk with `/env/burn.sh`
+
+
 ## Troubleshooting
 
 If you boot to a blank screen, or a blank screen with a single cursor line then you probably need to adjust your settings
@@ -31,9 +34,7 @@ If you boot to a blank screen, or a blank screen with a single cursor line then 
 - Boot your pi and you will be taken to the console.
 - Run `raspi-config`
 - advanced options > memory split > 128
-- interfacing > ssh on
 - interfacing > full gpu acceleration
-- advanced options > expand filesystem
 - restart
 - `startx` should load the gui
 - Power off
@@ -55,5 +56,6 @@ Everything should work
 - removed nightly build scripts
 
 ## TODO
+- ONEPAGEOS is tightly bound to their app url :(
 - change the way variants work, move their location and allow drop in installer scripts
 - image caching mid build for resumes?

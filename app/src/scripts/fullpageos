@@ -38,23 +38,20 @@ unmount_image ${FULLPAGEOS_MOUNT_PATH} force || true
 
 pushd ${FULLPAGEOS_WORKSPACE}
 
-    if [ -e *.img ]; then
+   if [ -e *.img ]; then
         echo 'Deleting stale output image'
         rm *.img
-    fi
+   fi
 
-    echo 'Unzip Image'
-    unzip ${FULLPAGEOS_ZIP_IMG}
-    FULLPAGEOS_IMG_PATH=`ls | grep .img`
-    export FULLPAGEOS_BUILDBASE=$(basename $FULLPAGEOS_IMG_PATH)
-    if [ -n "${FULLPAGEOS_IMAGE_ENLARGEROOT}" ]
-    then
+   echo 'Unzip Image'
+   unzip ${FULLPAGEOS_ZIP_IMG}
+   FULLPAGEOS_IMG_PATH=`ls | grep .img`
+   export FULLPAGEOS_BUILDBASE=$(basename $FULLPAGEOS_IMG_PATH)
+   if [ -n "${FULLPAGEOS_IMAGE_ENLARGEROOT}" ]
+   then
         # make our image a bit larger so we don't run into size problems...
         enlarge_ext $FULLPAGEOS_IMG_PATH 2 $FULLPAGEOS_IMAGE_ENLARGEROOT
-    fi
-    echo 'Make Backup Image'
-    cp ${FULLPAGEOS_IMG_PATH} "${FULLPAGEOS_IMG_PATH%.img}.bck"
-
+   fi
 
   # mount root and boot partition
   mount_image ${FULLPAGEOS_IMG_PATH} ${FULLPAGEOS_MOUNT_PATH}

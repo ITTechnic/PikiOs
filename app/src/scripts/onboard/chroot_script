@@ -13,8 +13,3 @@ for installer in ./installers/*.sh; do
     echo ${installer} | grep -oP "${regex}"
     source ${installer}
 done
-
-#cleanup
-echo 'Cleanup'
-apt-get clean
-apt-get autoremove -y

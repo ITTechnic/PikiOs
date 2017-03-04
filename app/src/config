@@ -24,6 +24,8 @@ then
   source $CONFIG_DIR/../../env/config.local
 fi
 
+ROOT_DIR=$CONFIG_DIR/../..
+
 ###############################################################################
 # All our config settings must start with FULLPAGEOS_
 
