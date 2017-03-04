@@ -1,5 +1,7 @@
 CONFIG_DIR=$(dirname $(realpath -s $BASH_SOURCE))
 
+ROOT_DIR=$CONFIG_DIR/../..
+
 # Import the variant config if we have one
 
 if [ -n "$VARIANT_CONFIG" ] && [ -f $VARIANT_CONFIG ]
@@ -24,7 +26,7 @@ then
   source $CONFIG_DIR/../../env/config.local
 fi
 
-ROOT_DIR=$CONFIG_DIR/../..
+
 
 ###############################################################################
 # All our config settings must start with FULLPAGEOS_
