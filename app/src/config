@@ -87,7 +87,7 @@ fi
 
 
 #FULLPAGEOS_QUIET_BOOT
-[ -n "FULLPAGEOS_QUIET_BOOT" ] || FULLPAGEOS_QUIET_BOOT=false
+[ -n "$FULLPAGEOS_QUIET_BOOT" ] || FULLPAGEOS_QUIET_BOOT=false
 
 ###############################################################################
 # Rewrite any build urls that are not yet set if we have a repository mirror

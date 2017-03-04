@@ -15,18 +15,7 @@ EOT
 
     apt-get update
 
-    DEBIAN_FRONTEND=noninteractive apt-get install -y -t stretch lighttpd \
-    php7.0 \
-    php7.0-common \
-    php7.0-cgi \
-    php7.0-opcache \
-    php7.0-curl \
-    php7.0-pdo \
-    php7.0-xml \
-    php7.0-cli \
-    php7.0-mbstring \
-    php7.0-mcrypt \
-    php7.0-intl
+    DEBIAN_FRONTEND=noninteractive apt-get install -y -t stretch lighttpd php7.0-common php7.0-cgi php7.0 php7.0-opcache php7.0-curl php7.0-common php7.0-cli php7.0-xml php7.0-mbstring
     lighty-enable-mod fastcgi-php
     #service lighttpd force-reload
     chown -R www-data:www-data /var/www/html

@@ -19,3 +19,4 @@ FULLPAGEOS_INCLUDE_WELCOME=yes
 
 # Set to true to have a nice black screen the whole boot
 FULLPAGEOS_QUIET_BOOT=false
+
