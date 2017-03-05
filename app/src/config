@@ -89,6 +89,12 @@ fi
 #FULLPAGEOS_QUIET_BOOT
 [ -n "$FULLPAGEOS_QUIET_BOOT" ] || FULLPAGEOS_QUIET_BOOT=false
 
+
+[ -n "$FULLPAGEOS_COMMAND_TOOL" ] || FULLPAGEOS_COMMAND_TOOL=https://github.com/twhiston/piki.git
+
+[ -n "$FULLPAGEOS_GOLANG_TAR_BASE" ] || FULLPAGEOS_GOLANG_TAR_BASE=https://storage.googleapis.com/golang/
+[ -n "$FULLPAGEOS_GOLANG_TAR_FILE" ] || FULLPAGEOS_GOLANG_TAR_FILE=go1.8.linux-amd64.tar.gz
+
 ###############################################################################
 # Rewrite any build urls that are not yet set if we have a repository mirror
 # configured.

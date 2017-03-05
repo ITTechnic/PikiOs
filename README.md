@@ -72,7 +72,7 @@ so make sure you have network connections set up.
 
 ## TODO
 
-
+- gpu set? #dtoverlay=vc4-kms-v3d
 - lighttpd vhost setup for proper vhosts when using php apps with a single entrypoint
 - ONEPAGEOS is tightly bound to their app url :( make this configurable
 - work on variants, which are not really well supported atm, allow drop in installer scripts in variants
