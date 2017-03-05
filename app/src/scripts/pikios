@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# FullPageOS generation script
+# PikiOs generation script
 # This script takes a Raspbian image and adds to it octoprint and verions addons
 # Written by Guy Sheffer <guysoft at gmail dot com>
 # GPL V3
@@ -9,7 +9,7 @@ set -e
 source ${COMMON_PATH}
 
 function execute_chroot_script() {
-  #move FullPageOS filesystem files
+  #move PikiOs filesystem files
   cp -vr --preserve=mode,timestamps $1/filesystem .
 
   #black magic of qemu-arm-static

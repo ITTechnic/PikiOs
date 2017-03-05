@@ -31,7 +31,7 @@ EOT
             gitclone PIKI_DASHBOARD_REPO PikiOs
             chown -R pi:pi PikiOs
             chown -R www-data:www-data PikiOs
-            chmod 775 FullPageDashboard
+            chmod 775 PikiOs
             pushd /var/www/html/PikiOs
                   php -r "readfile('https://getcomposer.org/installer');" | php
                   # Install App dependencies using Composer
