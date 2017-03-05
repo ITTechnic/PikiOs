@@ -1,13 +1,23 @@
-FullPageOS
-==========
-Docker Edition
+Piki
+====
+Advanced Raspberry Pi Kiosk management.
+BETA VERSION
 
-See readme.orig.rst for full details of configuring build.
-This build is made so that it is easier to build this image on a mac or pc, as the build process happens in a linux container
-It also moves the requirements, local config and build artifacts out of the build process folders to make organization cleaner
-and projects a little neater.
+This started as a fork of [FullPageOs](https://github.com/guysoft/FullPageOS) but has changed so much that is not really compatible any more
+This project is only possible thanks to the hard work of the original developers of FullPageOS.
 
-## Basic Usage
+## Piki Tool
+
+Piki comes with a helpful tool installed to aid with managing your kiosk, and brings lots of useful functions in to one place
+https://github.com/twhiston/piki
+run `piki` to see all the base commands and `piki [command] -h` to see help and subcommands for each base command.
+You can also use `piki` locally to help you pre-configure boot files for your piki kiosks
+
+
+## Basic Build Usage
+
+This build is specifically made and tested on OSX, which is why the build is configured to run in a docker machine.
+So if you are on linux the good news is you can avoid this entirely and just run ./scripts/build.sh locally to get an image
 
 In your local machine run
 ```
@@ -24,30 +34,28 @@ The final image will be output in `./built/*.img`
 
 If you want to change the build process you can alter env/build.sh
 
-You can burk the image to disk with `/env/burn.sh`
+You can burn the image to disk FROM YOUR LOCAL MACHINE with `/env/burn.sh` (assumes that your sdcard is on disk2 like my mac laptop, sorry, this will be made flexible in future)
 
-Before booting the image add ` 1` to cmdline.txt to boot to the prompt
-once at the prompt run `raspi-config` and make sure you configure
+Be sure to set up your networks before you boot your pi, as the main dashboard will pause on loading if it does not have an internet connection
+This can be disabled by running `piki httpd --disabled` (or locally with the sdcard mounted) `piki httpd --disabled --file /Volumes/boot/check_for_httpd`
 
-- your graphics card memory
-- install the driver for GPU acceleration
-- localization setup
 
-then `vi /boot/cmdline.txt` and remove the ` 1` you added earlier, save and restart
-
-## Troubleshooting
+## Pi Image Troubleshooting
 
 ### Blank screen, or a blank screen with a single cursor line
 you probably need to adjust your settings
-- Put the Pi SSD into your local machine and edit cmdline.txt. At the end of the file add ` 1`
+- Put the Pi SSD into your local machine and if you have `piki` installed locally run `piki boot --type recovery --file /Volumes/boot/cmdline.txt`
+    - If you dont have piki locally edit /Volumes/boot/cmdline.txt , after the word `rootwait` add ` 1`
 - Boot your pi and you will be taken to the console.
 - Run `raspi-config`
 - advanced options > memory split > 128
 - interfacing > full gpu acceleration
+- localization setup
 - restart
 - `startx` should load the gui
 - Power off
-- Edit cmdline.txt again and remove the ` 1`
+- Put the Pi SSD into your local machine and run `piki boot --type app --file /Volumes/boot/cmdline.txt`
+    - Or edit /Volumes/boot/cmdline.txt and remove the ` 1` after `rootwait`
 - Reboot your pi
 
 Everything should work
@@ -55,7 +63,7 @@ Everything should work
 ### Black screen with a cursor
 
 If it stalls after booting its because the script pauses if it cant connect to the web root,
-so make sure you have network connections set up.
+so make sure you have network connections set up properly
 
 
 ## Additional Changes
@@ -73,7 +81,6 @@ so make sure you have network connections set up.
 ## TODO
 
 - gpu set? #dtoverlay=vc4-kms-v3d
-- lighttpd vhost setup for proper vhosts when using php apps with a single entrypoint
 - ONEPAGEOS is tightly bound to their app url :( make this configurable
 - work on variants, which are not really well supported atm, allow drop in installer scripts in variants
 - image caching mid build for resumes?
