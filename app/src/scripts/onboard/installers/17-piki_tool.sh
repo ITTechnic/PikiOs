@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
-mkdir -p /home/pi/golang/src/github.com/twhiston
-gitclone FULLPAGEOS_COMMAND_TOOL /home/pi/golang/src/github.com/twhiston/piki
-export GOPATH=/home/pi/golang
+### Install Piki
+echo "Get Piki Tool from git"
+PIKI_SRC=${GOPATH}/src/github.com/twhiston/piki
+mkdir -p ${PIKI_SRC}
 
-pushd /home/pi/golang/src/github.com/twhiston/piki
-    go get
-    go build
-popd
+cat <<EOT >> /home/pi/.bashrc
+export PIKI_SRC=${PIKI_SRC}
+EOT
+
+chown -R pi ${GOPATH}
+gitclone FULLPAGEOS_COMMAND_TOOL ${PIKI_SRC}
+
+#getting of dependencies and tools is deferred to first boot because of threading issues with building this image in docker
+systemctl enable piki_first_boot.service

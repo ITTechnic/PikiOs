@@ -78,3 +78,4 @@ so make sure you have network connections set up.
 - work on variants, which are not really well supported atm, allow drop in installer scripts in variants
 - image caching mid build for resumes?
 - some folder structure changes for better separation
+- turn all the var parsing stuff into a go routine and start to make the whole tool in go

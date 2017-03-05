@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#need to test this with env vars as hard coding this path sucks
+PIKI_SRC=/home/pi/golang/src/github.com/twhiston/piki
+
+pushd ${PIKI_SRC}
+    echo "Get Piki Dependencies"
+    sudo go get
+    echo "Install Piki"
+    go build
+popd

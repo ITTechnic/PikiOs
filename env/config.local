@@ -1,7 +1,7 @@
 #This overrides the base build with some environment specific settings.
 #We always want these for our base version, but can be changed as appropriate
 
-#FULLPAGEOS_OVERRIDE_HOSTNAME=fullpageos
+#FULLPAGEOS_OVERRIDE_HOSTNAME=piki
 
 # Override the image and workspace paths to make the build a little cleaner
 FULLPAGEOS_IMAGE_PATH=$ROOT_DIR/image

@@ -38,12 +38,6 @@ EOT
                   ./composer.phar install --no-interaction --no-ansi --optimize-autoloader
             popd
         fi
-        #Set Welcome screen
-        if [ "${FULLPAGEOS_INCLUDE_WELCOME}" == "yes" ]
-        then
-            gitclone FULLPAGEOS_WELCOME_REPO welcome
-            chown -R www-data:www-data welcome
-        fi
     popd
 
     echo "enabled" > /boot/check_for_httpd

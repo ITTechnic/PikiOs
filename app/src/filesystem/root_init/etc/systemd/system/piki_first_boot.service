@@ -1,0 +1,9 @@
+[Unit]
+Description=Piki Builder Service
+After=multi-user.target
+[Service]
+Type=idle
+ExecStart=/home/pi/scripts/piki-builder
+ExecStop=
+[Install]
+WantedBy=multi-user.target
