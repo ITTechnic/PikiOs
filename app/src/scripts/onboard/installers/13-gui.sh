@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #set up gui service
-sed -i 's/#user-session=.*/user-session=fullpageos/g' /etc/lightdm/lightdm.conf
+sed -i 's/#user-session=.*/user-session=pikios/g' /etc/lightdm/lightdm.conf
 sed -i 's/#autologin-user=.*/autologin-user=pi/g' /etc/lightdm/lightdm.conf
 
 # Set up x11vnc

@@ -51,4 +51,4 @@ fi
 echo -e "--> Building VARIANT $BUILD_VARIANT, FLAVOR $BUILD_FLAVOR"
 
 source $PIKI_PATH/config
-[ "$CONFIG_ONLY" == "yes" ] || source ${BUILD_SCRIPT__PATH}/fullpageos
+[ "$CONFIG_ONLY" == "yes" ] || source ${BUILD_SCRIPT__PATH}/pikios

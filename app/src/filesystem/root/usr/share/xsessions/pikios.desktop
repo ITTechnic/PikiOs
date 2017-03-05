@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Name=PikiOS
+Exec=/home/pi/scripts/run_pikios
+Comment=PikiOS startup
+Type=Application

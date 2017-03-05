@@ -13,6 +13,8 @@ then
     rm /usr/bin/whiptail
     mv /usr/bin/whiptail.bak /usr/bin/whiptail
 
+    echo "dtoverlay=vc4-kms-v3d" >> /boot/config.txt
+
     systemctl enable enable_gpu_first_boot.service
 else
     echo "gpu_mem=128" >> /boot/config.txt

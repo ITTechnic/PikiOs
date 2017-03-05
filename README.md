@@ -1,7 +1,7 @@
 PikiOs(k)
 =========
 Advanced Raspberry Pi Kiosk management.
-BETA VERSION
+BETA VERSION - This is not stable yet and may require manual config
 
 This started as a fork of [FullPageOs](https://github.com/guysoft/FullPageOS) but has changed so much that is not really compatible any more
 This project is only possible thanks to the hard work of the original developers of FullPageOS.
@@ -84,6 +84,8 @@ so make sure you have network connections set up properly
 
 ## TODO
 
+- fix inital lighttpd config
+- fix initial httpd check issues
 - configurable boot screen for silent branded startups
 - gpu set? #dtoverlay=vc4-kms-v3d
 - ONEPAGEOS is tightly bound to their app url :( make this configurable

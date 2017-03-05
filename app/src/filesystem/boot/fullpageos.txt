@@ -1,1 +1,0 @@
-http://localhost/FullPageDashboard/frontend/src/client/index.html
