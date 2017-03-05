@@ -29,83 +29,83 @@ fi
 
 
 ###############################################################################
-# All our config settings must start with FULLPAGEOS_
+# All our config settings must start with PIKI_
 
-[ -n "$FULLPAGEOS_SCRIPT_PATH" ] || FULLPAGEOS_SCRIPT_PATH=$CONFIG_DIR
-[ -n "$FULLPAGEOS_IMAGE_PATH" ] || FULLPAGEOS_IMAGE_PATH=$FULLPAGEOS_SCRIPT_PATH/image
+[ -n "$PIKI_SCRIPT_PATH" ] || PIKI_SCRIPT_PATH=$CONFIG_DIR
+[ -n "$PIKI_IMAGE_PATH" ] || PIKI_IMAGE_PATH=$ROOT_DIR/image
 
-[ -n "$FULLPAGEOS_ZIP_IMG" ] || FULLPAGEOS_ZIP_IMG=`ls -t $FULLPAGEOS_IMAGE_PATH/*-raspbian*.zip | head -n 1`
+[ -n "$PIKI_ZIP_IMG" ] || PIKI_ZIP_IMG=`ls -t $PIKI_IMAGE_PATH/*-raspbian*.zip | head -n 1`
 
-[ -n "$FULLPAGEOS_WORKSPACE" ] || FULLPAGEOS_WORKSPACE=$FULLPAGEOS_SCRIPT_PATH/workspace$WORKSPACE_POSTFIX
-[ -n "$FULLPAGEOS_CHROOT_SCRIPT_PATH" ] || FULLPAGEOS_CHROOT_SCRIPT_PATH=$FULLPAGEOS_SCRIPT_PATH/scripts/onboard/chroot_script
-[ -n "$FULLPAGEOS_MOUNT_PATH" ] || FULLPAGEOS_MOUNT_PATH=$FULLPAGEOS_WORKSPACE/mount
+[ -n "$PIKI_WORKSPACE" ] || PIKI_WORKSPACE=$ROOT_DIR/built$WORKSPACE_POSTFIX
+[ -n "$PIKI_CHROOT_SCRIPT_PATH" ] || PIKI_CHROOT_SCRIPT_PATH=$PIKI_SCRIPT_PATH/scripts/onboard/chroot_script
+[ -n "$PIKI_MOUNT_PATH" ] || PIKI_MOUNT_PATH=$PIKI_WORKSPACE/mount
 
 # if set will enlarge root parition prior to build by provided size in MB
-[ -n "$FULLPAGEOS_IMAGE_ENLARGEROOT" ] || FULLPAGEOS_IMAGE_ENLARGEROOT=1000
+[ -n "$PIKI_IMAGE_ENLARGEROOT" ] || PIKI_IMAGE_ENLARGEROOT=1000
 
 # if set will resize root partition on image after build to minimum size + 
 # provided size in MB
-[ -n "$FULLPAGEOS_IMAGE_RESIZEROOT" ] || FULLPAGEOS_IMAGE_RESIZEROOT=200
+[ -n "$PIKI_IMAGE_RESIZEROOT" ] || PIKI_IMAGE_RESIZEROOT=200
 
 # a local directory on the build server to bind mount under /var/cache/apt
-[ -n "$FULLPAGEOS_APT_CACHE" ] || FULLPAGEOS_APT_CACHE=$FULLPAGEOS_WORKSPACE/aptcache
+[ -n "$PIKI_APT_CACHE" ] || PIKI_APT_CACHE=$PIKI_WORKSPACE/aptcache
 
 # a host:port combo for a apt-proxy (such as apt-cacher-ng) to use
-[ -n "$FULLPAGEOS_APT_PROXY" ] || FULLPAGEOS_APT_PROXY=
+[ -n "$PIKI_APT_PROXY" ] || PIKI_APT_PROXY=
 
 # an alternative pypi index url to use, e.g. a proxy such as devpi
-[ -n "$FULLPAGEOS_PYPI_INDEX" ] || FULLPAGEOS_PYPI_INDEX=
+[ -n "$PIKI_PYPI_INDEX" ] || PIKI_PYPI_INDEX=
 
-[ -n "$FULLPAGEOS_OVERRIDE_HOSTNAME" ] || FULLPAGEOS_OVERRIDE_HOSTNAME=fullpageos
+[ -n "$PIKI_OVERRIDE_HOSTNAME" ] || PIKI_OVERRIDE_HOSTNAME=pikios
 
 #override timezone, otherwise use image timezone
-[ -n "$FULLPAGEOS_OVERRIDE_TIMEZONE" ] || FULLPAGEOS_OVERRIDE_TIMEZONE=default
+[ -n "$PIKI_OVERRIDE_TIMEZONE" ] || PIKI_OVERRIDE_TIMEZONE=default
 
 #override locale, otherwise use image locale
-[ -n "$FULLPAGEOS_OVERRIDE_LOCALE" ] || FULLPAGEOS_OVERRIDE_LOCALE=default
+[ -n "$PIKI_OVERRIDE_LOCALE" ] || PIKI_OVERRIDE_LOCALE=default
 
 #override password, otherwise use image default
-[ -n "$FULLPAGEOS_OVERRIDE_PASSWORD" ] || FULLPAGEOS_OVERRIDE_PASSWORD=default
+[ -n "$PIKI_OVERRIDE_PASSWORD" ] || PIKI_OVERRIDE_PASSWORD=default
 
-[ -n "$FULLPAGEOS_INCLUDE_CHROMIUM" ] || FULLPAGEOS_INCLUDE_CHROMIUM=yes
-[ -n "$FULLPAGEOS_INCLUDE_LIGHTTPD" ] || FULLPAGEOS_INCLUDE_LIGHTTPD=yes
+[ -n "$PIKI_INCLUDE_CHROMIUM" ] || PIKI_INCLUDE_CHROMIUM=yes
+[ -n "$PIKI_INCLUDE_LIGHTTPD" ] || PIKI_INCLUDE_LIGHTTPD=yes
 
 # FullPageDashboard repo & branch
-[ -n "$FULLPAGEOS_DASHBOARD_REPO_SHIP" ] || FULLPAGEOS_DASHBOARD_REPO_SHIP=https://github.com/amitdar/FullPageDashboard.git
-[ -n "$FULLPAGEOS_DASHBOARD_REPO_BUILD" ] || FULLPAGEOS_DASHBOARD_REPO_BUILD=
-[ -n "$FULLPAGEOS_DASHBOARD_REPO_BRANCH" ] || FULLPAGEOS_DASHBOARD_REPO_BRANCH=master
-[ -n "$FULLPAGEOS_INCLUDE_DASHBOARD" ] || FULLPAGEOS_INCLUDE_DASHBOARD=yes
+[ -n "$PIKI_DASHBOARD_REPO_SHIP" ] || PIKI_DASHBOARD_REPO_SHIP=https://github.com/twhiston/PikiDashboard.git
+[ -n "$PIKI_DASHBOARD_REPO_BUILD" ] || PIKI_DASHBOARD_REPO_BUILD=
+[ -n "$PIKI_DASHBOARD_REPO_BRANCH" ] || PIKI_DASHBOARD_REPO_BRANCH=master
+[ -n "$PIKI_INCLUDE_DASHBOARD" ] || PIKI_INCLUDE_DASHBOARD=yes
 
 # Add GPU acceleration
-[ -n "$FULLPAGEOS_INCLUDE_ACCELERATION" ] || FULLPAGEOS_INCLUDE_ACCELERATION=yes
+[ -n "$PIKI_INCLUDE_ACCELERATION" ] || PIKI_INCLUDE_ACCELERATION=yes
 
 
-#FULLPAGEOS_QUIET_BOOT
-[ -n "$FULLPAGEOS_QUIET_BOOT" ] || FULLPAGEOS_QUIET_BOOT=false
+#PIKI_QUIET_BOOT
+[ -n "$PIKI_QUIET_BOOT" ] || PIKI_QUIET_BOOT=true
 
 
-[ -n "$FULLPAGEOS_COMMAND_TOOL_SHIP" ] || FULLPAGEOS_COMMAND_TOOL_SHIP=https://github.com/twhiston/piki.git
-[ -n "$FULLPAGEOS_COMMAND_TOOL_BUILD" ] || FULLPAGEOS_COMMAND_TOOL_BUILD=
-[ -n "$FULLPAGEOS_COMMAND_TOOL_BRANCH" ] || FULLPAGEOS_COMMAND_TOOL_BRANCH=master
+[ -n "$PIKI_COMMAND_TOOL_SHIP" ] || PIKI_COMMAND_TOOL_SHIP=https://github.com/twhiston/piki.git
+[ -n "$PIKI_COMMAND_TOOL_BUILD" ] || PIKI_COMMAND_TOOL_BUILD=
+[ -n "$PIKI_COMMAND_TOOL_BRANCH" ] || PIKI_COMMAND_TOOL_BRANCH=master
 
 
-[ -n "$FULLPAGEOS_GOLANG_TAR_BASE" ] || FULLPAGEOS_GOLANG_TAR_BASE=https://storage.googleapis.com/golang/
-[ -n "$FULLPAGEOS_GOLANG_TAR_FILE" ] || FULLPAGEOS_GOLANG_TAR_FILE=go1.8.linux-amd64.tar.gz
+[ -n "$PIKI_GOLANG_TAR_BASE" ] || PIKI_GOLANG_TAR_BASE=https://storage.googleapis.com/golang/
+[ -n "$PIKI_GOLANG_TAR_FILE" ] || PIKI_GOLANG_TAR_FILE=go1.8.linux-amd64.tar.gz
 
 ###############################################################################
 # Rewrite any build urls that are not yet set if we have a repository mirror
 # configured.
 
-if [ -n "$FULLPAGEOS_BUILD_REPO_MIRROR" ]
+if [ -n "$PIKI_BUILD_REPO_MIRROR" ]
 then
-	vars=`compgen -A variable | grep '^FULLPAGEOS_' | grep 'REPO_BUILD'`
+	vars=`compgen -A variable | grep '^PIKI_' | grep 'REPO_BUILD'`
 	for var in $vars
 	do
 		if [ ! -n "${!var}" ]
 		then
 			repo_ship_var=${var%_BUILD}_SHIP
 			original=${!repo_ship_var}
-			rewritten=$FULLPAGEOS_BUILD_REPO_MIRROR`echo $original | awk -F '/' '{print $(NF)}'`
+			rewritten=$PIKI_BUILD_REPO_MIRROR`echo $original | awk -F '/' '{print $(NF)}'`
 
 			echo "Rewriting build repo for $var from $original to $rewritten"
 			eval $var=$rewritten
@@ -119,7 +119,7 @@ fi
 echo "================================================================"
 echo "Using the following config:"
 
-vars=`compgen -A variable | grep '^FULLPAGEOS_'`
+vars=`compgen -A variable | grep '^PIKI_'`
 for var in $vars
 do
 	echo "$var = ${!var}"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-#if [ "$FULLPAGEOS_QUIET_BOOT" != "false" ]
+#if [ "$PIKI_QUIET_BOOT" != "false" ]
 #then
 #    echo 'make the startup quiet'
 #    cat '\n\r disable_splash=1 avoid_warnings=1' >> /boot/config.txt

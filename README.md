@@ -1,5 +1,5 @@
-Piki
-====
+PikiOs(k)
+=========
 Advanced Raspberry Pi Kiosk management.
 BETA VERSION
 
@@ -38,6 +38,10 @@ You can burn the image to disk FROM YOUR LOCAL MACHINE with `/env/burn.sh` (assu
 
 Be sure to set up your networks before you boot your pi, as the main dashboard will pause on loading if it does not have an internet connection
 This can be disabled by running `piki httpd --disabled` (or locally with the sdcard mounted) `piki httpd --disabled --file /Volumes/boot/check_for_httpd`
+
+## Customizing a build
+To quickly override variables edit `env/config.local`
+
 
 
 ## Pi Image Troubleshooting
@@ -80,6 +84,7 @@ so make sure you have network connections set up properly
 
 ## TODO
 
+- configurable boot screen for silent branded startups
 - gpu set? #dtoverlay=vc4-kms-v3d
 - ONEPAGEOS is tightly bound to their app url :( make this configurable
 - work on variants, which are not really well supported atm, allow drop in installer scripts in variants

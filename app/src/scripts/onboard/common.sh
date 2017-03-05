@@ -24,14 +24,14 @@ function pause() {
 }
 
 function gitclone(){
-  # call like this: gitclone FULLPAGEOS_REPO someDirectory -- this will do:
+  # call like this: gitclone PIKI_REPO someDirectory -- this will do:
   #
-  #   sudo -u pi git clone -b $FULLPAGEOS_REPO_BRANCH --depth $FULLPAGEOS_REPO_DEPTH $FULLPAGEOS_REPO_BUILD someDirectory
+  #   sudo -u pi git clone -b $PIKI_REPO_BRANCH --depth $PIKI_REPO_DEPTH $PIKI_REPO_BUILD someDirectory
   # 
-  # and if $FULLPAGEOS_REPO_BUILD != $FULLPAGEOS_REPO_SHIP also:
+  # and if $PIKI_REPO_BUILD != $PIKI_REPO_SHIP also:
   #
   #   pushd someDirectory
-  #     sudo -u pi git remote set-url origin $FULLPAGEOS_REPO_SHIP
+  #     sudo -u pi git remote set-url origin $PIKI_REPO_SHIP
   #   popd
   # 
   # if second parameter is not provided last URL segment of the BUILD repo URL
@@ -183,7 +183,7 @@ function cleanup() {
 function install_fail_on_error_trap() {
   set -e
   trap 'previous_command=$this_command; this_command=$BASH_COMMAND' DEBUG
-  trap 'if [ $? -ne 0 ]; then echo -e "\nexit $? due to $previous_command \nBUILD FAILED!" && echo "unmounting image..." && ( unmount_image $FULLPAGEOS_MOUNT_PATH force || true ); fi;' EXIT
+  trap 'if [ $? -ne 0 ]; then echo -e "\nexit $? due to $previous_command \nBUILD FAILED!" && echo "unmounting image..." && ( unmount_image $PIKI_MOUNT_PATH force || true ); fi;' EXIT
 }
 
 function install_chroot_fail_on_error_trap() {

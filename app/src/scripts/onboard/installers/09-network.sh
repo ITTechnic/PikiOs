@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 #reach pi by name
-echo "$FULLPAGEOS_OVERRIDE_HOSTNAME" > /etc/hostname
-sed -i -e "s@raspberrypi@$FULLPAGEOS_OVERRIDE_HOSTNAME@g" /etc/hosts
+echo "$PIKI_OVERRIDE_HOSTNAME" > /etc/hostname
+sed -i -e "s@raspberrypi@$PIKI_OVERRIDE_HOSTNAME@g" /etc/hosts
 
 # allow network configuration via /boot/fullpageos-network.txt
 sed -i "s@iface wlan0 @iface wlan0-raspbian @g" /etc/network/interfaces

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$FULLPAGEOS_INCLUDE_LIGHTTPD" == "yes" ]
+if [ "$PIKI_INCLUDE_LIGHTTPD" == "yes" ]
 then
     # Add the repos necessary to install php 7.0
     cat <<EOT >> /etc/apt/sources.list
@@ -26,9 +26,9 @@ EOT
 
     pushd /var/www/html
         #Put git clones in place
-        if [ "${FULLPAGEOS_INCLUDE_DASHBOARD}" == "yes" ]
+        if [ "${PIKI_INCLUDE_DASHBOARD}" == "yes" ]
         then
-            gitclone FULLPAGEOS_DASHBOARD_REPO FullPageDashboard
+            gitclone PIKI_DASHBOARD_REPO FullPageDashboard
             chown -R pi:pi FullPageDashboard
             chown -R www-data:www-data FullPageDashboard
             chmod 775 FullPageDashboard

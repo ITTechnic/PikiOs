@@ -10,10 +10,10 @@ COMMON_PATH=${BUILD_SCRIPT__PATH}/onboard/common.sh
 
 source ${COMMON_PATH}
 
-FULLPAGEOS_PATH=$(dirname $(realpath -s $0))
+PIKI_PATH=$(dirname $(realpath -s $0))
 
-pushd $FULLPAGEOS_PATH
-  export FULLPAGEOS_COMMIT=`git rev-parse HEAD`
+pushd $PIKI_PATH
+  export PIKI_COMMIT=`git rev-parse HEAD`
 popd
 
 BUILD_VARIANT=default
@@ -50,5 +50,5 @@ fi
 
 echo -e "--> Building VARIANT $BUILD_VARIANT, FLAVOR $BUILD_FLAVOR"
 
-source $FULLPAGEOS_PATH/config
+source $PIKI_PATH/config
 [ "$CONFIG_ONLY" == "yes" ] || source ${BUILD_SCRIPT__PATH}/fullpageos

@@ -30,15 +30,15 @@ function execute_chroot_script() {
   rm -rfv filesystem
 }
 
-mkdir -p ${FULLPAGEOS_WORKSPACE}
-mkdir -p ${FULLPAGEOS_MOUNT_PATH}
+mkdir -p ${PIKI_WORKSPACE}
+mkdir -p ${PIKI_MOUNT_PATH}
 
 install_cleanup_trap
-install_fail_on_error_trap ${FULLPAGEOS_MOUNT_PATH}
-unmount_image ${FULLPAGEOS_MOUNT_PATH} force || true
+install_fail_on_error_trap ${PIKI_MOUNT_PATH}
+unmount_image ${PIKI_MOUNT_PATH} force || true
 
 
-pushd ${FULLPAGEOS_WORKSPACE}
+pushd ${PIKI_WORKSPACE}
 
    if [ -e *.img ]; then
         echo 'Deleting stale output image'
@@ -46,34 +46,34 @@ pushd ${FULLPAGEOS_WORKSPACE}
    fi
 
    echo 'Unzip Image'
-   unzip ${FULLPAGEOS_ZIP_IMG}
-   FULLPAGEOS_IMG_PATH=`ls | grep .img`
-   export FULLPAGEOS_BUILDBASE=$(basename $FULLPAGEOS_IMG_PATH)
-   if [ -n "${FULLPAGEOS_IMAGE_ENLARGEROOT}" ]
+   unzip ${PIKI_ZIP_IMG}
+   PIKI_IMG_PATH=`ls | grep .img`
+   export PIKI_BUILDBASE=$(basename $PIKI_IMG_PATH)
+   if [ -n "${PIKI_IMAGE_ENLARGEROOT}" ]
    then
         # make our image a bit larger so we don't run into size problems...
-        enlarge_ext $FULLPAGEOS_IMG_PATH 2 $FULLPAGEOS_IMAGE_ENLARGEROOT
+        enlarge_ext $PIKI_IMG_PATH 2 $PIKI_IMAGE_ENLARGEROOT
    fi
 
   # mount root and boot partition
-  mount_image ${FULLPAGEOS_IMG_PATH} ${FULLPAGEOS_MOUNT_PATH}
-  if [ -n "${FULLPAGEOS_APT_CACHE}" ]
+  mount_image ${PIKI_IMG_PATH} ${PIKI_MOUNT_PATH}
+  if [ -n "${PIKI_APT_CACHE}" ]
   then
-    mkdir -p "${FULLPAGEOS_APT_CACHE}"
-    mount --bind "${FULLPAGEOS_APT_CACHE}" ${FULLPAGEOS_MOUNT_PATH}/var/cache/apt
+    mkdir -p "${PIKI_APT_CACHE}"
+    mount --bind "${PIKI_APT_CACHE}" ${PIKI_MOUNT_PATH}/var/cache/apt
   fi
 
   #Edit pi filesystem
-  pushd ${FULLPAGEOS_MOUNT_PATH}
+  pushd ${PIKI_MOUNT_PATH}
 
     #make QEMU boot (remember to return)
     fixLd
     #sed -i 's@include /etc/ld.so.conf.d/\*.conf@\#include /etc/ld.so.conf.d/\*.conf@' etc/ld.so.conf
 
     # if an additional pre-script is defined, execute that now
-    if [ -n "${FULLPAGEOS_PRESCRIPT}" ] && [ -f ${FULLPAGEOS_PRESCRIPT}/chroot_script ]; then
-      echo "Injecting environment pre script from ${FULLPAGEOS_PRESCRIPT}..."
-      execute_chroot_script {$FULLPAGEOS_PRESCRIPT} ${FULLPAGEOS_PRESCRIPT}/chroot_script
+    if [ -n "${PIKI_PRESCRIPT}" ] && [ -f ${PIKI_PRESCRIPT}/chroot_script ]; then
+      echo "Injecting environment pre script from ${PIKI_PRESCRIPT}..."
+      execute_chroot_script {$PIKI_PRESCRIPT} ${PIKI_PRESCRIPT}/chroot_script
     fi
 
     # if building a variant, execute its pre-chroot script
@@ -83,7 +83,7 @@ pushd ${FULLPAGEOS_WORKSPACE}
     fi
  
     # execute the base chroot script
-    execute_chroot_script ${FULLPAGEOS_SCRIPT_PATH} ${FULLPAGEOS_CHROOT_SCRIPT_PATH}
+    execute_chroot_script ${PIKI_SCRIPT_PATH} ${PIKI_CHROOT_SCRIPT_PATH}
     
     # if building a variant, execute its post-chroot script
     if [ -n "${VARIANT_BASE}" ] && [ -f ${VARIANT_BASE}/scripts/post_chroot_script ]; then
@@ -92,22 +92,22 @@ pushd ${FULLPAGEOS_WORKSPACE}
     fi
 
     # if an additional post-script is defined, execute that now
-    if [ -n "${FULLPAGEOS_POSTSCRIPT}" ] && [ -f ${FULLPAGEOS_POSTSCRIPT}/chroot_script ]; then
-      echo "Injecting environment post script from ${FULLPAGEOS_POSTSCRIPT}..."
-      execute_chroot_script ${FULLPAGEOS_POSTSCRIPT} ${FULLPAGEOS_POSTSCRIPT}/chroot_script
+    if [ -n "${PIKI_POSTSCRIPT}" ] && [ -f ${PIKI_POSTSCRIPT}/chroot_script ]; then
+      echo "Injecting environment post script from ${PIKI_POSTSCRIPT}..."
+      execute_chroot_script ${PIKI_POSTSCRIPT} ${PIKI_POSTSCRIPT}/chroot_script
     fi
 
     restoreLd
   popd
   
   # unmount first boot, then root partition
-  unmount_image ${FULLPAGEOS_MOUNT_PATH}
-  chmod 777 ${FULLPAGEOS_IMG_PATH}
+  unmount_image ${PIKI_MOUNT_PATH}
+  chmod 777 ${PIKI_IMG_PATH}
 
-  if [ -n "${FULLPAGEOS_IMAGE_RESIZEROOT}" ]
+  if [ -n "${PIKI_IMAGE_RESIZEROOT}" ]
   then
     # resize image to minimal size + provided size
-    minimize_ext ${FULLPAGEOS_IMG_PATH} 2 ${FULLPAGEOS_IMAGE_RESIZEROOT}
+    minimize_ext ${PIKI_IMG_PATH} 2 ${PIKI_IMAGE_RESIZEROOT}
   fi
 popd
 

@@ -10,7 +10,7 @@ export PIKI_SRC=${PIKI_SRC}
 EOT
 
 chown -R pi ${GOPATH}
-gitclone FULLPAGEOS_COMMAND_TOOL ${PIKI_SRC}
+gitclone PIKI_COMMAND_TOOL ${PIKI_SRC}
 
 #getting of dependencies and tools is deferred to first boot because of threading issues with building this image in docker
 systemctl enable piki_first_boot.service

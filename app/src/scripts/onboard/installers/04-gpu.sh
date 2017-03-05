@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "${FULLPAGEOS_INCLUDE_ACCELERATION}" == "yes" ]
+if [ "${PIKI_INCLUDE_ACCELERATION}" == "yes" ]
 then
     apt-get -y --force-yes install xcompmgr libgl1-mesa-dri mesa-utils
 
