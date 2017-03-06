@@ -28,11 +28,11 @@ EOT
         #Put git clones in place
         if [ "${PIKI_INCLUDE_DASHBOARD}" == "yes" ]
         then
-            gitclone PIKI_DASHBOARD_REPO PikiOs
-            chown -R pi:pi PikiOs
-            chown -R www-data:www-data PikiOs
-            chmod 775 PikiOs
-            pushd /var/www/html/PikiOs
+            gitclone PIKI_DASHBOARD_REPO PikiDashboard
+            chown -R pi:pi PikiDashboard
+            chown -R www-data:www-data PikiDashboard
+            chmod 775 PikiDashboard
+            pushd /var/www/html/PikiDashboard
                   php -r "readfile('https://getcomposer.org/installer');" | php
                   # Install App dependencies using Composer
                   ./composer.phar install --no-interaction --no-ansi --optimize-autoloader
@@ -41,7 +41,6 @@ EOT
     popd
 
     cat <<EOT > /etc/lighttpd/lighttpd.conf
-                                                                                                                                                    1,1           All
 server.modules = (
         "mod_access",
         "mod_alias",
@@ -49,7 +48,7 @@ server.modules = (
         "mod_redirect",
 )
 
-server.document-root        = "/var/www/html/PikiOs"
+server.document-root        = "/var/www/html/PikiDashboard"
 server.upload-dirs          = ( "/var/cache/lighttpd/uploads" )
 server.errorlog             = "/var/log/lighttpd/error.log"
 server.pid-file             = "/var/run/lighttpd.pid"
@@ -57,13 +56,6 @@ server.username             = "www-data"
 server.groupname            = "www-data"
 server.port                 = 80
 
-url.rewrite-once = (
-    # configure some static files
-    "^/assets/.+" => "$0",
-    "^/favicon\.ico$" => "$0",
-
-    "^(/[^\?]*)(\?.*)?" => "/index.php$1$2"
-)
 
 index-file.names            = ( "index.php", "index.html", "index.lighttpd.html" )
 url.access-deny             = ( "~", ".inc" )
@@ -77,6 +69,9 @@ include_shell "/usr/share/lighttpd/use-ipv6.pl " + server.port
 include_shell "/usr/share/lighttpd/create-mime.assign.pl"
 include_shell "/usr/share/lighttpd/include-conf-enabled.pl"
 EOT
+
+chmod 644 /etc/lighttpd/lighttpd.conf
+
 
     echo "enabled" > /boot/check_for_httpd
 else

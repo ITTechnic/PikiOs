@@ -6,6 +6,6 @@ services:
       build:
         context: ./env
         dockerfile: Dockerfile
-      container_name: pikibuilder
+      container_name: pikios_builder
       volumes:
         - ./:/build

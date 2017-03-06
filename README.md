@@ -3,7 +3,8 @@ PikiOs(k)
 Advanced Raspberry Pi Kiosk management.
 BETA VERSION - This is not stable yet and may require manual config
 
-This started as a fork of [FullPageOs](https://github.com/guysoft/FullPageOS) but has changed so much that is not really compatible any more
+This started as a fork of [FullPageOs](https://github.com/guysoft/FullPageOS) but has changed so much that is not really compatible any more, and I feel my roadmap is quite different, therefore I made it into a new distribution
+
 This project is only possible thanks to the hard work of the original developers of FullPageOS.
 
 ## Piki Tool
@@ -75,7 +76,7 @@ so make sure you have network connections set up properly
 - The local config file included in this project contains a different app repo to the base image
     - react frontend
     - api driven silex back end
-    - see [FullPageDashboard - fork](https://github.com/twhiston/FullPageDashboard/tree/rewrite)
+    - see [FullPageDashboard - fork](https://github.com/twhiston/PikiOs)
 - PHP version updated to 7.0
 - Removed some code that was specific to the original site repo from the build process to make it more generic
 - Moved around config files and broke up scripts, more to do on this in future
@@ -84,11 +85,13 @@ so make sure you have network connections set up properly
 
 ## TODO
 
-- fix inital lighttpd config
+- fix inital lighttpd config - currently to get it working out of the box you will need to manually edit this see [silex instructions](http://silex.sensiolabs.org/doc/2.0/web_servers.html#lighttpd)
+- fix gpu set issue #dtoverlay=vc4-kms-v3d and also needs the installer to run
+
 - fix initial httpd check issues
+- rename check_for_httpd to something more obvious
 - configurable boot screen for silent branded startups
-- gpu set? #dtoverlay=vc4-kms-v3d
-- ONEPAGEOS is tightly bound to their app url :( make this configurable
+
 - work on variants, which are not really well supported atm, allow drop in installer scripts in variants
 - image caching mid build for resumes?
 - some folder structure changes for better separation
